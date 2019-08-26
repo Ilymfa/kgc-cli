@@ -1,11 +1,11 @@
 const fs = require('fs');
 const chalk = require('chalk');//可以给终端的字体加上颜色。
 const symbols = require('log-symbols');//可以在终端上显示出 √ 或 × 等的图标。
+const path = require('path');
 let arr = [];
-
 module.exports = function(name,answers){
     if(!fs.existsSync(name)){
-        let templatePath = './project' + '/' + answers.type,
+        let templatePath = path.join(__dirname, '../project'+ '/' + answers.type);
             targetPath = './'+name;
         fs.mkdir(targetPath,function () {
             pushFileType(arr,templatePath);
